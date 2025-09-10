@@ -1,0 +1,23 @@
+package com.mycompany.prog2;
+// Test Algebra Vectorial.
+// @autor Natalia Ruby
+// @version 1.0 08/09/2025
+
+public class TestVector {
+    public static void main(String[] args) {
+        Vector a = new Vector(3, 4);
+        Vector b = new Vector(-4, 3);
+
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+
+        System.out.println("a . b = " + a.dot(b));
+        System.out.println("a x b = " + a.cross(b));
+
+        System.out.println("Perpendiculares " + a.isPerpendicular(b));
+        System.out.println("Paralelos " + a.isParallel(b));
+
+        System.out.println("Proyeccion de a sobre b: " + a.projection(b));
+        System.out.println("Componente de a sobre b: " + a.component(b));
+    }
+}
