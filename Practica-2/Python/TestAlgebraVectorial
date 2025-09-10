@@ -1,0 +1,18 @@
+#(TEST) Algebra Vectorial
+#@autor Natalia Ruby
+#@version 1.0 08/09/2025
+
+a = Vector(3, 4)
+b = Vector(-4, 3)
+
+print("a =", a)
+print("b =", b)
+
+print("a · b =", a @ b)
+print("a × b =", a ^ b)
+
+print("¿Perpendiculares?", a.is_perpendicular(b))
+print("¿Paralelos?", a.is_parallel(b))
+
+print("Proyección de a sobre b:", a.projection(b))
+print("Componente de a sobre b:", a.component(b))
