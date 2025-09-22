@@ -1,0 +1,52 @@
+#Juego 01
+#@autor Natalia Ruby
+#@version 1.0 20/09/2025
+
+import random
+
+class Juego:
+    def __init__(self, numeroDeVidas: int):
+        self.numeroDeVidas = numeroDeVidas
+        self.record = float("inf") 
+
+    def reiniciaPartida(self, vidas: int):
+        self.numeroDeVidas = vidas
+
+    def quitaVida(self) -> bool:
+        self.numeroDeVidas -= 1
+        return self.numeroDeVidas > 0
+
+    def actualizaRecord(self, intentos: int):
+        if intentos < self.record:
+            self.record = intentos
+            print(f" Nuevo record: {self.record} intentos!")
+
+
+class JuegoAdivinaNumero(Juego):
+    def __init__(self, numeroDeVidas: int):
+        super().__init__(numeroDeVidas)
+        self.numeroAAdivinar = None
+
+    def juega(self):
+        self.reiniciaPartida(self.numeroDeVidas)
+        self.numeroAAdivinar = random.randint(0, 10)
+        intentos = 0
+
+        print("Adivina un numero entre 0 y 10:")
+
+        while self.numeroDeVidas > 0:
+            intento = int(input("Tu numero: "))
+            intentos += 1
+
+            if intento == self.numeroAAdivinar:
+                print("Acertaste!!!")
+                self.actualizaRecord(intentos)
+                return
+            else:
+                if self.quitaVida():
+                    if intento < self.numeroAAdivinar:
+                        print("El numero a adivinar es MAYOR. Intenta otra vez.")
+                    else:
+                        print("El numero a adivinar es MENOR. Intenta otra vez.")
+                else:
+                    print(f"Has perdido. El numero era: {self.numeroAAdivinar}")
