@@ -1,0 +1,10 @@
+package com.mycompany.prog2;
+// Aplicacion01
+// @autor Natalia Ruby
+// @version 1.0 20/09/2025
+public class aplicacion01 {
+    public static void main(String[] args) {
+        JuegoAdivinaNumero juego = new JuegoAdivinaNumero(3);
+        juego.juega();
+    }
+}
