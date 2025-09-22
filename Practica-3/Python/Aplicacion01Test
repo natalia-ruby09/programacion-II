@@ -1,0 +1,7 @@
+#Aplicacion01Test
+#@autor Natalia Ruby
+#@version 1.0 20/09/2025
+
+if __name__ == "__main__":
+    juego = JuegoAdivinaNumero(3)
+    juego.juega()
