@@ -1,0 +1,83 @@
+#Juego 02
+#@autor Natalia Ruby
+#@version 1.0 20/09/2025
+
+import random
+class Juego:
+    def __init__(self, numeroDeVidas: int):
+        self.numeroDeVidas = numeroDeVidas
+        self.record = 0
+
+    def reiniciaPartida(self):
+        self.numeroDeVidas = 3
+        print("Nueva partida iniciada. Vidas:", self.numeroDeVidas)
+
+    def actualizaRecord(self):
+        if self.numeroDeVidas > self.record:
+            self.record = self.numeroDeVidas
+        print("Record actual:", self.record)
+
+    def quitaVida(self) -> bool:
+        self.numeroDeVidas -= 1
+        if self.numeroDeVidas > 0:
+            print("Te queda", self.numeroDeVidas, "vidas.")
+            return True
+        else:
+            print("No te quedan vidas. Fin del juego.")
+            return False
+
+class JuegoAdivinaNumero(Juego):
+    def __init__(self, numeroDeVidas: int):
+        super().__init__(numeroDeVidas)
+        self.numeroAAdivinar = None
+
+    def validaNumero(self, num: int) -> bool:
+        return 0 <= num <= 10
+
+    def juega(self):
+        self.reiniciaPartida()
+        self.numeroAAdivinar = random.randint(0, 10)
+        print("Adivina un numero entre 0 y 10.")
+
+        while True:
+            try:
+                num = int(input("Introduce un numero: "))
+            except ValueError:
+                print("Entrada inválida. Debes ingresar un numero entero.")
+                continue
+
+            if not self.validaNumero(num):
+                print("Numero fuera de rango (0-10). Intenta otra vez.")
+                continue
+
+            if num == self.numeroAAdivinar:
+                print("¡Acertaste!")
+                self.actualizaRecord()
+                break
+            else:
+                if not self.quitaVida():
+                    break
+                if num < self.numeroAAdivinar:
+                    print("El número a adivinar es mayor.")
+                else:
+                    print("El número a adivinar es menor.")
+
+class JuegoAdivinaPar(JuegoAdivinaNumero):
+    def validaNumero(self, num: int) -> bool:
+        if 0 <= num <= 10:
+            if num % 2 == 0:
+                return True
+            else:
+                print("Error: Solo puedes ingresar numeros pares.")
+                return False
+        return False
+
+class JuegoAdivinaImpar(JuegoAdivinaNumero):
+    def validaNumero(self, num: int) -> bool:
+        if 0 <= num <= 10:
+            if num % 2 != 0:
+                return True
+            else:
+                print("Error: Solo puedes ingresar numeros impares.")
+                return False
+        return False
