@@ -1,0 +1,85 @@
+package com.mycompany.prog2;
+// Figura
+// @autor Natalia Ruby
+// @version 1.0 22/09/2025
+
+interface Coloreado {
+    String comoColorear();
+}
+
+abstract class Figura {
+    protected String color;
+
+    public Figura(String color) {
+        this.color = color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public abstract double area();
+    public abstract double perimetro();
+
+    @Override
+    public String toString() {
+        return "Figura de color: " + color;
+    }
+}
+
+class Cuadrado extends Figura implements Coloreado {
+    private final double lado;
+
+    public Cuadrado(double lado, String color) {
+        super(color);
+        this.lado = lado;
+    }
+
+    @Override
+    public double area() {
+        return lado * lado;
+    }
+
+    @Override
+    public double perimetro() {
+        return 4 * lado;
+    }
+
+    @Override
+    public String comoColorear() {
+        return "Colorear los cuatro lados.";
+    }
+
+    @Override
+    public String toString() {
+        return "Cuadrado [lado=" + lado + ", color=" + color + "]";
+    }
+}
+
+class Circulo extends Figura {
+    private final double radio;
+
+    public Circulo(double radio, String color) {
+        super(color);
+        this.radio = radio;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * radio * radio;
+    }
+
+    @Override
+    public double perimetro() {
+        return 2 * Math.PI * radio;
+    }
+
+    @Override
+    public String toString() {
+        return "Círculo [radio=" + radio + ", color=" + color + "]";
+    }
+}
