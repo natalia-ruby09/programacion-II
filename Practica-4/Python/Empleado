@@ -1,0 +1,39 @@
+#empleado
+#@autor Natalia Ruby
+#@version 1.0 22/09/2025
+
+from abc import ABC, abstractmethod
+
+class Empleado(ABC):
+    def __init__(self, nombre: str):
+        self.nombre = nombre
+
+    @abstractmethod
+    def calcularSalarioMensual(self) -> float:
+        pass
+
+    def __str__(self):
+        return f"Empleado: {self.nombre}"
+
+class EmpleadoTiempoCompleto(Empleado):
+    def __init__(self, nombre: str, salarioAnual: float):
+        super().__init__(nombre)
+        self.salarioAnual = salarioAnual
+
+    def calcularSalarioMensual(self) -> float:
+        return self.salarioAnual / 12
+
+    def __str__(self):
+        return f"{super().__str__()} | Tipo: Tiempo Completo | Salario mensual: {self.calcularSalarioMensual()}"
+
+class EmpleadoTiempoHorario(Empleado):
+    def __init__(self, nombre: str, horasTrabajadas: float, tarifaPorHora: float):
+        super().__init__(nombre)
+        self.horasTrabajadas = horasTrabajadas
+        self.tarifaPorHora = tarifaPorHora
+
+    def calcularSalarioMensual(self) -> float:
+        return self.horasTrabajadas * self.tarifaPorHora
+
+    def __str__(self):
+        return f"{super().__str__()} | Tipo: Tiempo Horario | Salario mensual: {self.calcularSalarioMensual()}"
