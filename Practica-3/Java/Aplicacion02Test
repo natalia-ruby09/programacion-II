@@ -1,0 +1,20 @@
+package com.mycompany.prog2;
+// Aplicacion2
+// @autor Natalia Ruby
+// @version 1.0 20/09/2025
+public class aplicacion02 {
+    public static void main(String[] args) {
+        JuegoAdivinaNumero2 juego1 = new JuegoAdivinaNumero2(3);
+        JuegoAdivinaPar juego2 = new JuegoAdivinaPar(3);
+        JuegoAdivinaImpar juego3 = new JuegoAdivinaImpar(3);
+
+        System.out.println("--- Juego Adivina Numero ---");
+        juego1.juega();
+
+        System.out.println("\n--- Juego Adivina Numero PAR ---");
+        juego2.juega();
+
+        System.out.println("\n--- Juego Adivina Numero IMPAR ---");
+        juego3.juega();
+    }
+}
