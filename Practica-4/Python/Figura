@@ -1,0 +1,63 @@
+#Figura
+#@autor Natalia Ruby
+#@version 1.0 22/09/2025
+
+import random
+from abc import ABC, abstractmethod
+
+class Coloreado:
+    def comoColorear(self) -> str:
+        pass
+
+class Figura(ABC):
+    def __init__(self, color: str):
+        self.color = color
+
+    def setColor(self, color: str):
+        self.color = color
+
+    def getColor(self) -> str:
+        return self.color
+
+    @abstractmethod
+    def area(self) -> float:
+        pass
+
+    @abstractmethod
+    def perimetro(self) -> float:
+        pass
+
+    def __str__(self):
+        return f"Figura de color: {self.color}"
+
+class Cuadrado(Figura, Coloreado):
+    def __init__(self, lado: float, color: str):
+        super().__init__(color)
+        self.lado = lado
+
+    def area(self) -> float:
+        return self.lado * self.lado
+
+    def perimetro(self) -> float:
+        return 4 * self.lado
+
+    def comoColorear(self) -> str:
+        return "Colorear los cuatro lados."
+
+    def __str__(self):
+        return f"Cuadrado [lado={self.lado}, color={self.color}]"
+
+class Circulo(Figura):
+    def __init__(self, radio: float, color: str):
+        super().__init__(color)
+        self.radio = radio
+
+    def area(self) -> float:
+        return 3.1416 * self.radio * self.radio
+
+    def perimetro(self) -> float:
+        return 2 * 3.1416 * self.radio
+
+    def __str__(self):
+        return f"Círculo [radio={self.radio}, color={self.color}]"
+    
