@@ -1,0 +1,57 @@
+package com.mycompany.prog2;
+// Empleado
+// @autor Natalia Ruby
+// @version 1.0 22/09/2025
+abstract class Empleado {
+    protected String nombre;
+
+    public Empleado(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public abstract double CalcularSalarioMensual();
+
+    @Override
+    public String toString() {
+        return "Empleado: " + nombre;
+    }
+}
+
+class EmpleadoTiempoCompleto extends Empleado {
+    private final double salarioAnual;
+
+    public EmpleadoTiempoCompleto(String nombre, double salarioAnual) {
+        super(nombre);
+        this.salarioAnual = salarioAnual;
+    }
+
+    @Override
+    public double CalcularSalarioMensual() {
+        return salarioAnual / 12;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " | Tipo: Tiempo Completo | Salario mensual: " + CalcularSalarioMensual();
+    }
+}
+class EmpleadoTiempoHorario extends Empleado {
+    private final double horasTrabajadas;
+    private final double tarifaPorHora;
+
+    public EmpleadoTiempoHorario(String nombre, double horasTrabajadas, double tarifaPorHora) {
+        super(nombre);
+        this.horasTrabajadas = horasTrabajadas;
+        this.tarifaPorHora = tarifaPorHora;
+    }
+
+    @Override
+    public double CalcularSalarioMensual() {
+        return horasTrabajadas * tarifaPorHora;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " | Tipo: Tiempo Horario | Salario mensual: " + CalcularSalarioMensual();
+    }
+}
