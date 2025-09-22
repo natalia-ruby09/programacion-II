@@ -1,0 +1,21 @@
+#empleado (Test)
+#@autor Natalia Ruby
+#@version 1.0 22/09/2025
+
+if __name__ == "__main__":
+    empleados = []
+
+    for i in range(3):
+        nombre = input("Ingrese nombre del empleado tiempo completo: ")
+        salario = float(input("Ingrese salario anual: "))
+        empleados.append(EmpleadoTiempoCompleto(nombre, salario))
+
+    for i in range(2):
+        nombre = input("Ingrese nombre del empleado tiempo horario: ")
+        horas = float(input("Ingrese horas trabajadas: "))
+        tarifa = float(input("Ingrese tarifa por hora: "))
+        empleados.append(EmpleadoTiempoHorario(nombre, horas, tarifa))
+
+    print("\n--- Lista de empleados ---")
+    for emp in empleados:
+        print(emp)
