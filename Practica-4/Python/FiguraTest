@@ -1,0 +1,26 @@
+#Figura(Test)
+#@autor Natalia Ruby
+#@version 1.0 22/09/2025
+
+if __name__ == "__main__":
+    colores = ["Rojo", "Verde", "Azul", "Amarillo", "Negro"]
+    figuras = []
+
+    for _ in range(5):
+        tipo = random.randint(0, 1) 
+        color = random.choice(colores)
+
+        if tipo == 0:
+            lado = random.randint(1, 10)
+            figuras.append(Cuadrado(lado, color))
+        else:
+            radio = random.randint(1, 10)
+            figuras.append(Circulo(radio, color))
+
+    for f in figuras:
+        print(f)
+        print("Area:", f.area())
+        print("Perimetro:", f.perimetro())
+        if isinstance(f, Coloreado):
+            print(f.comoColorear())
+        print("------------------------")
