@@ -1,0 +1,22 @@
+#Aplicacion02Test
+#@autor Natalia Ruby
+#@version 1.0 20/09/2025
+class Aplicacion:
+    @staticmethod
+    def main():
+        juego1 = JuegoAdivinaNumero(3)
+        juego2 = JuegoAdivinaPar(3)
+        juego3 = JuegoAdivinaImpar(3)
+
+        print("\n--- Juego Adivina Numero ---")
+        juego1.juega()
+
+        print("\n--- Juego Adivina Par ---")
+        juego2.juega()
+
+        print("\n--- Juego Adivina Impar ---")
+        juego3.juega()
+
+
+if __name__ == "__main__":
+    Aplicacion.main()
