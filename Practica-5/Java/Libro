@@ -1,0 +1,39 @@
+package com.mycompany.biblioteca1;
+
+import java.util.ArrayList;
+
+class Libro {
+
+    class Pagina {
+        private final int numero;
+        private final String contenido;
+
+        public Pagina(int numero, String contenido) {
+            this.numero = numero;
+            this.contenido = contenido;
+        }
+
+        public void mostrarPagina() {
+            System.out.println("[" + numero + "] " + contenido);
+        }
+    }
+
+    private final String titulo;
+    private final ArrayList<Pagina> paginas;
+
+    public Libro(String titulo, String isbn, String[] contenidoPaginas) {
+        this.titulo = titulo;
+        this.paginas = new ArrayList<>();
+
+        for(int i = 0; i < contenidoPaginas.length; i++) {
+            paginas.add(new Pagina(i+1, contenidoPaginas[i]));
+        }
+    }
+
+    public String getTitulo() { return titulo; }
+
+    public void leer() {
+        for(Pagina p : paginas) p.mostrarPagina();
+    }
+}
+
