@@ -1,0 +1,15 @@
+package com.mycompany.biblioteca1;
+
+class Prestamo {
+    private final Estudiante estudiante;
+    private final Libro libro;
+
+    public Prestamo(Estudiante e, Libro l) {
+        this.estudiante = e;
+        this.libro = l;
+    }
+
+    public void mostrarInfo() {
+        System.out.println(estudiante.getNombre() + " tiene el libro: " + libro.getTitulo());
+    }
+}
