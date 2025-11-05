@@ -1,0 +1,68 @@
+package com.mycompany.biblioteca1;
+
+import java.util.ArrayList;
+
+class biblioteca1 {
+
+    class Horario {
+        private final String dias;
+        private final String horaApertura;
+        private final String horaCierre;
+
+        public Horario(String dias, String ha, String hc) {
+            this.dias = dias;
+            this.horaApertura = ha;
+            this.horaCierre = hc;
+        }
+
+        public void mostrarHorario() {
+            System.out.println("Horario: " + dias + " | " + horaApertura + " - " + horaCierre);
+        }
+    }
+
+    private final String nombre;
+    private final ArrayList<Libro> libros; 
+    private final ArrayList<Autor> autores;   
+    private final ArrayList<Prestamo> prestamos;
+    private final Horario horario;            
+
+    public biblioteca1(String nombre, String dias, String ha, String hc) {
+        this.nombre = nombre;
+        this.libros = new ArrayList<>();
+        this.autores = new ArrayList<>();
+        this.prestamos = new ArrayList<>();
+        this.horario = new Horario(dias, ha, hc);
+    }
+
+    public void agregarLibro(Libro libro) {
+        libros.add(libro);
+    }
+
+    public void agregarAutor(Autor autor) {
+        autores.add(autor);
+    }
+
+    public void prestarLibro(Estudiante est, Libro libro) {
+        prestamos.add(new Prestamo(est, libro));
+    }
+
+    public void mostrarEstado() {
+        System.out.println("\n Biblioteca: " + nombre);
+        horario.mostrarHorario();
+
+        System.out.println("\nLibros:");
+        for(Libro l : libros) System.out.println(" - " + l.getTitulo());
+
+        System.out.println("\nAutores:");
+        for(Autor a : autores) a.mostrarInfo();
+
+        System.out.println("\nPrestamos Activos:");
+        for(Prestamo p : prestamos) p.mostrarInfo();
+    }
+
+    public void cerrarBiblioteca() {
+        System.out.println("\n Biblioteca cerrada. Eliminando prestamos...");
+        prestamos.clear();
+    }
+}
+
