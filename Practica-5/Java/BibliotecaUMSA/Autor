@@ -1,0 +1,15 @@
+package com.mycompany.biblioteca1;
+
+class Autor {
+    private final String nombre;
+    private final String nacionalidad;
+
+    public Autor(String n, String nac) {
+        this.nombre = n;
+        this.nacionalidad = nac;
+    }
+
+    public void mostrarInfo() {
+        System.out.println(nombre + " (" + nacionalidad + ")");
+    }
+}
