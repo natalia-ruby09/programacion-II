@@ -1,0 +1,120 @@
+class Biblioteca:
+
+    class Horario:
+        def __init__(self, dias, horaAp, horaCierre):
+            self.dias = dias
+            self.horaAp = horaAp
+            self.horaCierre = horaCierre
+
+        def mostrarHorario(self):
+            print(f"Horario: {self.dias} | {self.horaAp} - {self.horaCierre}")
+
+    def __init__(self, nombre, dias, ha, hc):
+        self.nombre = nombre
+        self.libros = []       
+        self.autores = []      
+        self.prestamos = []    
+        self.horario = Biblioteca.Horario(dias, ha, hc) 
+
+    def agregarLibro(self, libro):
+        self.libros.append(libro)
+
+    def agregarAutor(self, autor):
+        self.autores.append(autor)
+
+    def prestarLibro(self, estudiante, libro):
+        prestamo = Prestamo(estudiante, libro)
+        self.prestamos.append(prestamo)
+
+    def mostrarEstado(self):
+        print(f"\n Biblioteca: {self.nombre}")
+        self.horario.mostrarHorario()
+
+        print("\nLibros:")
+        for l in self.libros:
+            print(" -", l.titulo)
+
+        print("\nAutores:")
+        for a in self.autores:
+            a.mostrarInfo()
+
+        print("\nPréstamos Activos:")
+        for p in self.prestamos:
+            p.mostrarInfo()
+
+    def cerrarBiblioteca(self):
+        print("\n  Biblioteca cerrada. Eliminando préstamos...")
+        self.prestamos.clear()
+
+class Libro:
+    
+    class Pagina:
+        def __init__(self, numero, contenido):
+            self.numero = numero
+            self.contenido = contenido
+
+        def mostrarPagina(self):
+            print(f"[{self.numero}] {self.contenido}")
+
+    def __init__(self, titulo, isbn, contenido_paginas):
+        self.titulo = titulo
+        self.isbn = isbn
+        self.paginas = []
+
+        for i, texto in enumerate(contenido_paginas):
+            self.paginas.append(Libro.Pagina(i+1, texto))
+
+    def leer(self):
+        for p in self.paginas:
+            p.mostrarPagina()
+
+class Autor:
+    def __init__(self, nombre, nacionalidad):
+        self.nombre = nombre
+        self.nacionalidad = nacionalidad
+
+    def mostrarInfo(self):
+        print(f"{self.nombre} ({self.nacionalidad})")
+
+class Estudiante:
+    def __init__(self, codigo, nombre):
+        self.codigo = codigo
+        self.nombre = nombre
+
+    def mostrarInfo(self):
+        print(f"{self.codigo} - {self.nombre}")
+
+
+class Prestamo:
+    def __init__(self, estudiante, libro):
+        self.estudiante = estudiante
+        self.libro = libro
+
+    def mostrarInfo(self):
+        print(f"-{self.estudiante.nombre} tiene el libro: {self.libro.titulo}")
+
+
+if __name__ == "__main__":
+
+    b = Biblioteca("Biblioteca UMSA", "Lun-Vie", "08:00", "18:00")
+
+    a1 = Autor("Holly Black", "Estados Unidos")
+    a2 = Autor("Joana Marcus", "España")
+    b.agregarAutor(a1)
+    b.agregarAutor(a2)
+
+    l1 = Libro("El Principe Cruel", "ISBN001", ["Había una vez...", "Final del cuento."])
+    l2 = Libro("Antes de Diciembre", "ISBN002", ["Página 1...", "Página 2..."])
+    b.agregarLibro(l1)
+    b.agregarLibro(l2)
+
+    e1 = Estudiante("202045678", "Natalia Ruby")
+    e2 = Estudiante("202056321", "Benjamin Perez")
+
+    b.prestarLibro(e1, l1)
+    b.prestarLibro(e2, l2)
+
+    b.mostrarEstado()
+
+    b.cerrarBiblioteca()
+    b.mostrarEstado()
