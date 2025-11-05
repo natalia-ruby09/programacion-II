@@ -1,0 +1,33 @@
+package com.mycompany.biblioteca1;
+
+public class App {
+    public static void main(String[] args) {
+
+        biblioteca1 b = new biblioteca1("Biblioteca UMSA", "Lun-Vie", "08:00", "18:00");
+
+        Autor a1 = new Autor("Holly Black", "Estados Unidos");
+        Autor a2 = new Autor("Joana Marcus", "España");
+
+        b.agregarAutor(a1);
+        b.agregarAutor(a2);
+
+        String[] paginas1 = {"Habia una vez...", "Final del cuento."};
+        Libro l1 = new Libro("El Principe Cruel", "ISBN001", paginas1);
+        String[] paginas2 = {"Pagina 1...", "Pagina 2..."};
+        Libro l2 = new Libro("Antes de Diciembre", "ISBN002", paginas2);
+
+        b.agregarLibro(l1);
+        b.agregarLibro(l2);
+
+        Estudiante e1 = new Estudiante("202045678", "Natalia Ruby");
+        Estudiante e2 = new Estudiante("202056321", "Benjamin Perez");
+
+        b.prestarLibro(e1, l1);
+        b.prestarLibro(e2, l2);
+
+        b.mostrarEstado();
+
+        b.cerrarBiblioteca();
+        b.mostrarEstado();
+    }
+}
