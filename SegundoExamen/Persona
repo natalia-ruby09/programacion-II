@@ -1,0 +1,25 @@
+package com.mycompany.teleferico;
+
+public class Persona {
+    private String nombre;
+    private int edad;
+    private float peso;
+
+    public Persona(String nombre, int edad, float peso) {
+        if (edad < 0 || edad > 120) {
+            throw new IllegalArgumentException("Edad fuera del rango permitido (0–100)");
+        }
+        this.nombre = nombre;
+        this.edad = edad;
+        this.peso = peso;
+    }
+
+    public String getNombre() { return nombre; }
+    public int getEdad() { return edad; }
+    public float getPeso() { return peso; }
+
+    @Override
+    public String toString() {
+        return nombre + " (" + edad + " anios, " + peso + "kg)";
+    }
+}
