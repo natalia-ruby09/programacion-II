@@ -1,0 +1,44 @@
+package com.mycompany.teleferico;
+
+public class Main {
+    public static void main(String[] args) {
+
+        MiTeleferico mt = new MiTeleferico();
+
+        Linea roja = new Linea("Rojo");
+        Linea verde = new Linea("Verde");
+        Linea amarilla = new Linea("Amarilla")
+
+        mt.agregarLinea(roja);
+        mt.agregarLinea(verde);
+        mt.agregarLinea(amarilla);
+
+        roja.agregarCabina(1);
+        roja.agregarCabina(2);
+
+        verde.agregarCabina(1);
+        
+        amarilla.agregarCabina(1);
+
+        Persona p1 = new Persona("natalia", 20, 20);
+        Persona p2 = new Persona("mireya", 30, 40);
+        Persona p3 = new Persona("jazmin", 65, 43);
+        
+        roja.agregarPersona(p1);
+        roja.agregarPersona(p2);
+        verde.agregarPersona(p3);
+        amarilla.agregarPersona(p3);
+
+        Cabina c1 = roja.getCabina(1);
+        c1.agregarPersona(p1);
+
+        System.out.println("Ingreso total linea roja: " + roja.ingresoTotal());
+        System.out.println("Ingreso total linea verde: " + verde.ingresoTotal());
+        System.out.println("Ingreso total linea amarilla: " + amarilla.ingresoTotal());
+
+        Linea mejor = mt.lineaMayorIngresoRegular();
+        if (mejor != null) {
+            System.out.println("Linea con mayor ingreso regular: " + mejor.getColor());
+        }
+    }
+}
