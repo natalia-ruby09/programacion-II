@@ -1,0 +1,68 @@
+package com.mycompany.teleferico;
+
+public class Linea {
+    private final String color;
+    private final Persona[] filaPersonas;
+    private final Cabina[] cabinas;
+    private int cantidadCabinas;
+
+    public Linea(String color) {
+        this.color = color;
+        this.filaPersonas = new Persona[50];
+        this.cabinas = new Cabina[50];
+        this.cantidadCabinas = 0;
+    }
+
+    public void agregarPersona(Persona p) {
+        for (int i = 0; i < filaPersonas.length; i++) {
+            if (filaPersonas[i] == null) {
+                filaPersonas[i] = p;
+                break;
+            }
+        }
+    }
+
+    public void agregarCabina(int nroCab) {
+        cabinas[cantidadCabinas] = new Cabina(nroCab);
+        cantidadCabinas++;
+    }
+
+    public Cabina getCabina(int nroCab) {
+        for (Cabina c : cabinas) {
+            if (c != null && c.getNroCabina() == nroCab) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public boolean verificarReglas() {
+        for (int i = 0; i < cantidadCabinas; i++) {
+            if (cabinas[i].obtenerPesoTotal() > 850) return false;
+        }
+        return true;
+    }
+
+    public double ingresoTotal() {
+        double total = 0;
+        double tarifaRegular = 3.0;
+        double tarifaPreferencial = 1.5;
+
+        for (Persona px : filaPersonas) {
+            if (px != null) {
+                int e = px.getEdad();
+                if (e < 25 || e > 60) total += tarifaPreferencial;
+                else total += tarifaRegular;
+            }
+        }
+        return total;
+    }
+
+    public String getColor() { 
+        return color; 
+    }
+
+    public Persona[] getFilaPersonas() {
+        return filaPersonas;
+    }
+}
