@@ -1,0 +1,48 @@
+package com.mycompany.teleferico;
+//Natalia Ruby Rivera Zurita
+public class MiTeleferico {
+    private final Linea[] lineas;
+
+    public MiTeleferico() {
+        this.lineas = new Linea[10];
+    }
+
+    public void agregarLinea(Linea l) {
+        for (int i = 0; i < lineas.length; i++) {
+            if (lineas[i] == null) {
+                lineas[i] = l;
+                break;
+            }
+        }
+    }
+    
+public Linea lineaMayorIngresoRegular() {
+    double mayor = -1;
+    Linea mejor = null;
+
+    for (Linea l : lineas) {
+        if (l != null) {
+
+            Persona[] fila = l.getFilaPersonas();
+            if (fila == null) continue;
+
+            double suma = 0;
+
+            for (Persona px : fila) {
+                if (px != null) {
+                    int e = px.getEdad();
+
+                    if (e >= 25 && e <= 60) {
+                        suma += 3.0;
+                    }
+                }
+            }
+
+            if (suma > mayor) {
+                mayor = suma;
+                mejor = l;
+            }
+        }
+    }
+        return mejor;}
+}
