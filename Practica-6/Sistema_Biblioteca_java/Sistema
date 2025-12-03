@@ -1,0 +1,115 @@
+package com.mycompany.app;
+
+import java.util.ArrayList;
+
+public class Sistema {
+
+    public static Biblioteca biblioteca;
+
+    public static ArrayList<Autor> autores = new ArrayList<>();
+    public static ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+    public static ArrayList<Prestamo> prestamos = new ArrayList<>();
+    public static ArrayList<Libro> libros = new ArrayList<>();
+
+    public static void agregarPrestamo(Prestamo p) {
+        prestamos.add(p);
+    }
+
+    public static String mostrarPrestamos() {
+        if (prestamos.isEmpty()) {
+            return "No hay prestamos registrados.\n";
+        }
+        StringBuilder sb = new StringBuilder("LISTA DE PRESTAMOS\n");
+        for (Prestamo p : prestamos) {
+            sb.append(p.mostrar()).append("\n");
+        }
+        return sb.toString();
+    }
+    public static void agregarAutor(Autor a) {
+        autores.add(a);
+    }
+
+    public static String mostrarAutores() {
+        if (autores.isEmpty()) {
+            return "No hay autores registrados.\n";
+        }
+        String texto = "LISTA DE AUTORES:\n";
+        for (Autor a : autores) {
+            texto += a.mostrar() + "\n";
+        }
+        return texto;
+    }
+
+    public static void agregarLibro(Libro libro) {
+        libros.add(libro);
+    }
+
+    public static String mostrarLibros() {
+        if (libros.isEmpty()) {
+            return "No hay libros registrados.\n";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (Libro l : libros) {
+            sb.append(l.mostrar())
+              .append("\n---------------------\n");
+        }
+        return sb.toString();
+    }
+    public static void agregarEstudiante(Estudiante e) {
+        listaEstudiantes.add(e);
+    }
+
+    public static String mostrarEstudiantes() {
+        if (listaEstudiantes.isEmpty())
+            return "No hay estudiantes agregados.\n";
+
+        StringBuilder sb = new StringBuilder("LISTA DE ESTUDIANTES:\n");
+        for (Estudiante e : listaEstudiantes) {
+            sb.append(e.mostrar()).append("\n");
+        }
+        return sb.toString();
+    }
+    public static Libro buscarLibro(String codigo) {
+        for (Libro l : libros) {
+            if (l.getCodigo().equalsIgnoreCase(codigo)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+    public static Estudiante buscarEstudiante(String codigo) {
+        for (Estudiante e : listaEstudiantes) {
+            if (e.getCodigo().equalsIgnoreCase(codigo)) {
+                return e;
+            }
+        }
+        return null;
+    }
+    public static void guardarTodo() {
+        Persistencia.guardar("autores.json", autores);
+        Persistencia.guardar("estudiantes.json", listaEstudiantes);
+        Persistencia.guardar("libros.json", libros);
+        Persistencia.guardar("prestamos.json", prestamos);
+    }
+
+    public static void cargarTodo() {
+        autores = Persistencia.cargar("autores.json",
+                new com.google.gson.reflect.TypeToken<ArrayList<Autor>>(){});
+
+        listaEstudiantes = Persistencia.cargar("estudiantes.json",
+                new com.google.gson.reflect.TypeToken<ArrayList<Estudiante>>(){});
+
+        libros = Persistencia.cargar("libros.json",
+                new com.google.gson.reflect.TypeToken<ArrayList<Libro>>(){});
+
+        prestamos = Persistencia.cargar("prestamos.json",
+                new com.google.gson.reflect.TypeToken<ArrayList<Prestamo>>(){});
+    }
+
+    static void iniciar() {
+        System.out.println("Sistema iniciado correctamente.");
+    }
+}
+
