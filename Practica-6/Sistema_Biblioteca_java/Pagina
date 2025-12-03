@@ -1,0 +1,23 @@
+package com.mycompany.app;
+
+public class Pagina {
+    private final int numero;
+    private final String contenido;
+
+    public Pagina(int numero, String contenido) {
+        this.numero = numero;
+        this.contenido = contenido;
+    }
+
+    public String mostrarPagina() {
+        return "Pagina " + numero + ":\n" + contenido + "\n";
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+}
