@@ -1,0 +1,18 @@
+package com.mycompany.app;
+
+public class Horario {
+    private final String dias;
+    private final String horaApertura;
+    private final String horaCierre;
+
+    public Horario(String dias, String horaApertura, String horaCierre){
+        this.dias = dias;
+        this.horaApertura = horaApertura;
+        this.horaCierre = horaCierre;
+    }
+
+    public String mostrar(){
+        return "Atencion: " + dias 
+                + " | Abre: " + horaApertura 
+                + " | Cierra: " + horaCierre;}
+}
