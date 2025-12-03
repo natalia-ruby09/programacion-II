@@ -1,0 +1,45 @@
+package com.mycompany.app;
+
+import java.util.ArrayList;
+
+public class Libro {
+    private final String codigo;
+    private final String titulo;
+    private final String genero;
+    private final int numPaginas; 
+
+    private ArrayList<Pagina> paginas = new ArrayList<>();
+    
+    public Libro(String codigo, String titulo, String genero, int numPaginas) {
+        this.codigo = codigo;
+        this.titulo = titulo;
+        this.genero = genero;
+        this.numPaginas = numPaginas;
+    }
+    
+    public String mostrar() {
+        return "Codigo: " + codigo +
+               "\nTitulo: " + titulo +
+               "\nGenero: " + genero +
+               "\nNumero de Paginas: " + numPaginas;
+    }
+        public String getCodigo(){
+        return codigo;
+    }
+
+    public void agregarPagina(Pagina p){
+        paginas.add(p);
+    }
+
+    public String mostrarPaginas(){
+        if (paginas.isEmpty()){
+            return "El libro no tiene paginas registradas.\n";
+        }
+
+        StringBuilder sb = new StringBuilder("PAGINAS DEL LIBRO:\n");
+        for (Pagina p : paginas){
+            sb.append(p.mostrarPagina()).append("\n");
+        }
+        return sb.toString();
+    }
+}
