@@ -1,0 +1,17 @@
+package com.mycompany.app;
+
+public class Autor {
+    private final String nombre;
+    private final int edad;
+    private final String nacionalidad;
+    
+    public Autor(String nombre, int edad, String nacionalidad){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.nacionalidad = nacionalidad;
+    }
+    
+    public String mostrar(){
+        return "Autor\n" + "Nombre: " + nombre + "\n" + "Edad: " + edad + "\n" + "Nacionalidad: " + nacionalidad + "\n";
+    }
+}
