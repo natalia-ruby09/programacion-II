@@ -1,0 +1,21 @@
+package com.mycompany.app;
+
+public class Prestamo {
+    private final Libro libro;
+    private final Estudiante estudiante;
+    private final String fecha;
+
+    public Prestamo(Libro libro, Estudiante estudiante, String fecha){
+        this.libro = libro;
+        this.estudiante = estudiante;
+        this.fecha = fecha;
+    }
+
+    public String mostrar(){
+        return "PRESTAMO\n" +
+               "Fecha: " + fecha + "\n" +
+               "Libro:\n" + libro.mostrar() + "\n" +
+               "Estudiante:\n" + estudiante.mostrar() + 
+               "\n------------------------\n";
+    }
+}
