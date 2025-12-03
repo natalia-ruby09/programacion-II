@@ -1,0 +1,22 @@
+package com.mycompany.app;
+
+public class Estudiante {
+    private final String codigo;
+    private final String nombre;
+    private final int edad;
+    private final String carrera;
+    
+    public Estudiante(String codigo, String nombre, int edad, String carrera){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.carrera = carrera;
+    }
+    public String mostrar(){
+    return "ESTUDIANTE\n"+"Codigo: "+codigo+"\n"+"Nombre: "+nombre+"\n"+"Edad: "+edad+"\n"+"Carrera: "+carrera+"\n";}
+
+    public String getCodigo(){
+        return codigo;
+    }
+   }
+
