@@ -1,0 +1,11 @@
+package com.mycompany.app;
+
+public class App {
+
+    public static void main(String[] args) {
+        Sistema.iniciar();
+        Sistema.cargarTodo();
+        Sistema.guardarTodo();
+       new Menu().setVisible(true);
+    }
+}
