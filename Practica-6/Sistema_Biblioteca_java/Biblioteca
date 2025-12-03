@@ -1,0 +1,29 @@
+package com.mycompany.app;
+
+public class Biblioteca {
+    private final String nombre;
+    private final Horario horario;
+    private boolean abierta;
+    
+    public Biblioteca(String nombre, Horario horario){
+        this.nombre = nombre;
+        this.horario = horario;
+        this.abierta = true;
+    }
+
+    public Biblioteca(String nombre, String dias, String apertura, String cierre){
+        this.nombre = nombre;
+        this.horario = new Horario(dias, apertura, cierre);
+        this.abierta = true;
+    }
+
+    public String mostrarEstado(){
+        String estado = abierta ? "ABIERTA" : "CERRADA";
+        return "Biblioteca: " + nombre + 
+               " | Estado: " + estado + "\n" + 
+               horario.mostrar();
+    }
+
+    public void cerrarBiblioteca(){
+        this.abierta = false;}
+}
