@@ -1,0 +1,25 @@
+package com.mycompany.consultorio;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println("Cargando datos...");
+        Sistema.altaMedicosYConsultas();
+
+        System.out.println("--- Lista de Medicos ---");
+        for (Medico m : Sistema.medicos) {
+            System.out.println(m.nombreMed + " " + m.apellidoMed);
+        }
+
+        System.out.println("--- Lista de Consultas ---");
+        for (Consulta c : Sistema.consultas) {
+            System.out.println(c.mostrar());
+        }
+
+        System.out.println("--- Correccion Fechas ---");
+        Sistema.corregirFechas();
+
+        System.out.println("--- Cumpleaños ---");
+        Sistema.mostrarCumple(16, "30");
+    }
+}
