@@ -1,0 +1,27 @@
+package com.mycompany.consultorio;
+
+public class Consulta {
+    int ci;
+    String nombrePaciente;
+    String apellidoPaciente;
+    int idMed;
+    int dia; 
+    String mes;
+    int anio;
+    
+    public Consulta(int ci, String nombrePaciente, String apellidoPaciente,
+                    int idMed, int dia, String mes, int anio) {
+        this.ci = ci;
+        this.nombrePaciente = nombrePaciente;
+        this.apellidoPaciente = apellidoPaciente;
+        this.idMed = idMed;
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
+    }
+
+    public String mostrar() {
+        
+        return ci + "-" + nombrePaciente + " " + apellidoPaciente + " ( " + dia + "/" + mes + "/" + anio + ")";
+    }
+}
