@@ -1,0 +1,29 @@
+package com.mycompany.consultorio;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.ArrayList;
+
+public class Persistencia {
+
+    private static final String DIR = "data/";  
+    private static final Gson gson = new Gson();
+
+    public static <T> void guardar(String archivo, ArrayList<T> lista) {
+        try (FileWriter fw = new FileWriter(DIR + archivo)) {
+            gson.toJson(lista, fw);
+        } catch (Exception e) {
+            System.out.println("Error al guardar: " + archivo);
+        }
+    }
+
+    public static <T> ArrayList<T> cargar(String archivo, TypeToken<ArrayList<T>> tipo) {
+        try (FileReader fr = new FileReader(DIR + archivo)) {
+            return gson.fromJson(fr, tipo.getType());
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }
+}
