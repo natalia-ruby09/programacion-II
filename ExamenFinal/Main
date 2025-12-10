@@ -1,20 +1,24 @@
 package com.mycompany.consultorio;
+
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println("datos...");
+        Sistema.cargarTodo(); 
+
         Sistema.altaMedicosYConsultas();
 
-        System.out.println("--- Lista de Medicos ---");
+        System.out.println("--- Lista Medicos ---");
         for (Medico m : Sistema.medicos)
             System.out.println(m.mostrar());
 
-        System.out.println("--- Lista de Consultas ---");
+        System.out.println("--- Lista Consultas ---");
         for (Consulta c : Sistema.consultas)
             System.out.println(c.mostrar());
 
         System.out.println("--- Baja del medico Benjamin Paredes ---");
         Sistema.bajaMedico("Benjamin", "Paredes");
-        
+
         System.out.println("--- Medicos luego de la Baja ---");
         for (Medico m : Sistema.medicos)
             System.out.println(m.mostrar());
@@ -28,5 +32,8 @@ public class Main {
 
         System.out.println("--- Cumple del 30/09 ---");
         Sistema.mostrarCumple(30, "09");
+
+        Sistema.guardarTodo();
+        System.out.println("Datos guardados en data.");
     }
 }
